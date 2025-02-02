@@ -1,0 +1,27 @@
+The following CSS code snippet exhibits an uncommon error related to specificity and inheritance:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  color: green; /* This rule is overridden unexpectedly */
+}
+
+.special-paragraph {
+  color: purple;
+}
+
+div .special-paragraph {
+  color: orange; /* This rule is correctly applied */
+}
+```
+
+In this example, the unexpected behavior arises from the interaction between inheritance and specificity. The `div p` selector has a higher specificity than the `p` selector, so the `color: green` rule should override `color: red`.  However, this is often misinterpreted, and developers may expect `color: red` to still apply to `<p>` elements within `<div>` containers. This is because inheritance would suggest it should cascade down.
+
+The correct behavior is demonstrated by `div .special-paragraph`. The class selector adds to specificity, allowing the `color: orange` to override the `color: purple` rule. The difference in behaviour arises from how CSS specificity calculation handles element selectors vs class selectors in addition to inheritance.
