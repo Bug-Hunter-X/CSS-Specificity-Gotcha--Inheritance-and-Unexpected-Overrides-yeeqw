@@ -1,0 +1,49 @@
+The solution involves understanding the correct way to apply styles to nested elements: 
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  color: green; /* This is correct; it overrides the inherited red */
+}
+
+.special-paragraph {
+  color: purple;
+}
+
+div .special-paragraph {
+  color: orange; /* This is also correct */
+}
+```
+
+Alternatively, to maintain the `color:red` for `<p>` elements within divs:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  /* color: green; */
+}
+
+.special-paragraph {
+  color: purple;
+}
+
+div .special-paragraph {
+  color: orange; 
+}
+```
+
+This improved solution utilizes a clear separation of styles, so inheritance can be used. Using `!important` can work but isn't recommended for maintainability.
